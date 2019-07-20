@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/crabman84/NodeProjects/issues"
   },
-  "homepage": "https://github.com/crabman84/NodeProjects#readme"
+  "homepage": "https://github.com/crabman84/NodeProjects#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "global": "^4.4.0",
+    "hbs": "^4.0.4",
+    "request": "^2.88.0",
+    "require": "^2.4.20"
+  }
 }
