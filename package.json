@@ -1,0 +1,23 @@
+{
+  "name": "grid",
+  "version": "1.0.0",
+  "description": "Make a grid from a screen of certain dimensions",
+  "main": "main.js",
+  "scripts": {
+    "test": "test-grid"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/crabman84/NodeProjects.git"
+  },
+  "keywords": [
+    "Node",
+    "Grid"
+  ],
+  "author": "crabman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crabman84/NodeProjects/issues"
+  },
+  "homepage": "https://github.com/crabman84/NodeProjects#readme"
+}
