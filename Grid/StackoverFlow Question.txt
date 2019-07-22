@@ -1,0 +1,75 @@
+Stackovr flow Question: 
+
+Sumarise problem: 
+I am trying to draw a Grid using the canvas element in Node through my local html file. Node is on the server side and so can't directly access the canvas element.
+
+
+Provide background:
+I have tried using jsdom.FromFile to access the canvas element in the html file but I am still unable to draw onto it in my run through.
+jsdom link: https://www.npmjs.com/package/jsdom
+I have also tried using the canvas node module but I keep getting Error: 'document is not defined' because I am using Node
+
+Show some code( will need to edit this later): 
+
+Index.html(contains the canvas)
+```
+<!DOCTYPE html>
+<html>
+<body>
+    <canvas id="grid" width="1000" height="600"></canvas>
+    <p id="creator">Created by {{name}}</p>
+</body>
+
+</html>
+```
+
+app.js file
+```
+//require modules
+const path = require('path');
+const express = require('express');
+const hbs = require('hbs');
+const jsdom  = require("jsdom");
+const fs = require('fs');
+
+//require other JS files
+const square = require('./dist/SquareClass.js')
+const canvas = require('./dist/Canvas.js')
+
+//define vars from modules
+const app = express();
+const { JSDOM } = jsdom;
+
+const indexFile = "./templates/views/index.hbs";
+var canvasElement = null;
+
+const  dom = JSDOM
+            .fromFile(indexFile)
+            .then(dom => {
+                canvasElement  = dom.window.document.getElementById("grid");
+            })
+            .then(dom => {
+                console.log(canvasElement);
+            });
+
+
+
+const publicDirectoryPath = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../templates/views');
+const partialsPath = path.join(__dirname, '../templates/partials');
+
+app.use(express.static(publicDirectoryPath));
+app.set('view engine', 'hbs');
+app.set('views', viewsPath);
+hbs.registerPartials(partialsPath);
+
+app.get('', (req, res) =>{
+    res.render('index', {
+        name: 'CrabMan'
+    })
+})
+
+app.listen(3000, () =>{
+    console.log('Server is on port 3000.');
+})
+```
