@@ -1,23 +1,19 @@
-class Square{
-
-    private _sName: string = "Sour Face";
-    // private _canvas: HTMLCanvasElement = document.getElementById('grid');
-
-    private _xPos: number = 0;
-    private _yPos: number = 0;
-    private _length: number = 0;
-    private _SidesArray = ["left", "top", "right", "bottom"];
-    private _CornerArray = ["topLeft", "topRight", "botleft", "botRight"];
+class Square {
     // private _contgitext: CanvasRenderingContext2D;
-
-    public constructor(x:number, y: number, length: number){
+    constructor(x, y, length) {
+        this._sName = "Sour Face";
+        // private _canvas: HTMLCanvasElement = document.getElementById('grid');
+        this._xPos = 0;
+        this._yPos = 0;
+        this._length = 0;
+        this._SidesArray = ["left", "top", "right", "bottom"];
+        this._CornerArray = ["topLeft", "topRight", "botleft", "botRight"];
         this.xPos = x;
         this.yPos = y;
-        this.length = length; 
+        this.length = length;
         this.sName = "Sour Eyes";
     }
-
-    public DrawMe(): string {
+    DrawMe() {
         let strTest = "Drawing Square TEST";
         console.log(strTest);
         return strTest;
@@ -30,55 +26,49 @@ class Square{
         //     console.log('This canvas is nt supported');
         // }
     }
-//#region Property Accessors
-
-
-    get sName(): string{
+    //#region Property Accessors
+    get sName() {
         return this._sName;
     }
-    set sName(value: string) {
-        this._sName= value;
+    set sName(value) {
+        this._sName = value;
     }
-
-    get xPos(): number {
+    get xPos() {
         return this._xPos;
     }
-    set xPos(value: number) {
+    set xPos(value) {
         this._xPos = value;
     }
-
-    get yPos(): number {
+    get yPos() {
         return this._yPos;
     }
-    set yPos(value: number) {
+    set yPos(value) {
         this._yPos = value;
     }
-
-    get length(): number {
+    get length() {
         return this._length;
     }
-    set length(value: number) {
+    set length(value) {
         this._length = value;
     }
-    get sides(): string[] {
+    get sides() {
         return this._SidesArray;
     }
-    set sides(value: string[]){
+    set sides(value) {
         this.sides = value;
     }
-    get corner(): string[] {
+    get corner() {
         return this._CornerArray;
     }
-    set corner(value: string[]) {
+    set corner(value) {
         this._CornerArray = value;
     }
 }
 //#endregion
-
 // window.onload = () => {
 //     HTMLElement el = document.getElementById('grid');
 //     var greeter = new Square(el);
 //     greeter.start();
 // };
-
 module.exports = Square;
+//# sourceMappingURL=SquareClass.js.map

@@ -1,0 +1,4 @@
+TODOs:
+Create object of Square class in app.js 
+ - Simplify Square class to just write to console
+ - 

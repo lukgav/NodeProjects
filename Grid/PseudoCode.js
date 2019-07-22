@@ -29,6 +29,8 @@
 // - Has array of four sides 
 // - Has array of 4 edges
 // Features:
+// DrawSelf()
+//
 
 
 // class SquareGrid : inherits from Square
