@@ -14,29 +14,29 @@
 
 
 
-class Screen: 
-Charactersitics:
-- Width 
-- Length
-- Grid
+// class Screen: 
+// Charactersitics:
+// - Width 
+// - Length
+// - Grid
 
 
-class Square:
-Characteristics:
-- Has x and y position
-- width -  Float
-- Length = width - float
-- Has array of four sides 
-- Has array of 4 edges
-Features:
+// class Square:
+// Characteristics:
+// - Has x and y position
+// - width -  Float
+// - Length = width - float
+// - Has array of four sides 
+// - Has array of 4 edges
+// Features:
 
 
-class SquareGrid : inherits from Square
-Characteristics:
-- has itself a grid of 9 squares in side itself
+// class SquareGrid : inherits from Square
+// Characteristics:
+// - has itself a grid of 9 squares in side itself
 
-Classy Grid
-Characteristics
-- Array of Squares
-- Number of rows
-- Number of columns
+// Classy Grid
+// Characteristics
+// - Array of Squares
+// - Number of rows
+// - Number of columns
