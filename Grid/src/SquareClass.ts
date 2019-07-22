@@ -53,7 +53,6 @@ class Square{
     set yPos(value: number) {
         this._yPos = value;
     }
-
     get length(): number {
         return this._length;
     }
