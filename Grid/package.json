@@ -2,12 +2,12 @@
   "name": "grid",
   "version": "1.0.0",
   "description": "Make a grid from a screen of certain dimensions",
-  "main": "src/app.js",
+  "main": "src/appTest.js",
   "scripts": {
     "test": "test-grid",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
-    "watch-app": "nodemon --watch src app.js"
+    "watch-app": "nodemon --watch appTest.js"
   },
   "repository": {
     "type": "git",

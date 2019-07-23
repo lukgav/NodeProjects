@@ -1,40 +1,55 @@
 //require modules
 const path = require('path');
 const express = require('express');
+const hbs = require('hbs');
 const jsdom  = require("jsdom");
-const { createCanvas, loadImage } = require('canvas');
 
-//require other JS files
-const canvas = require('./dist/Canvas.js')
+const canvas = require('./dist/Canvas.js');
+const app = express();//Set up paths
 
-//define vars from modules
-const app = express();
+//Set up paths, views and handlebars
+const publicDirectoryPath = path.join(__dirname, '../public');
+app.use(express.static(publicDirectoryPath));
+app.set('view engine', 'hbs');
+//handlebars views set up
+const viewsPath = path.join(__dirname, '../templates/views')
+app.set('views', viewsPath)
+// Partials
+const partialsPath = path.join(__dirname, '../templates/partials')
+hbs.registerPartials(partialsPath)
+
+
+//Canvas object instantiation
+var canvasEl = null;
+var canvasOb = new canvas(canvasEl);
 
 //JSDOM
-/* const { JSDOM } = jsdom;
+const { JSDOM } = jsdom;
 
-const htmlFile = "./public/index.html";
-var canvasElement = null;
+const htmlFile = "./templates/views/index.hbs";
+var canvasEl = null;
 
 const  dom = JSDOM
             .fromFile(htmlFile)
             .then(dom => {
-                canvasElement  = dom.window.document.getElementById("grid");
+                canvasEl  = dom.window.document.getElementById("grid");
             })
             .then(dom => {
-                console.log(canvasElement);
+                // console.log(canvasEl);
+                canvasOb.canvasElement = canvasEl;
+            })
+            .then(dom => {
+                canvasOb.DrawTest();
             });
 
-console.log(canvasElement); */
 
-//Set up paths
-const publicDirectoryPath = path.join(__dirname, '../public');
 
-app.use(express.static(publicDirectoryPath));
-app.set('view engine', 'hbs');
+// console.log(canvasEl);
+
+
 
 app.get('', (req, res) =>{
-    res.send({
+    res.render('index', {
         title: 'Canvas Page',
         name: 'crabman'
     })

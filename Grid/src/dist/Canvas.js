@@ -4,15 +4,13 @@ const { JSDOM } = jsdom;
 //Variabls from modules
 //jsdom
 class Canvas {
-    constructor(pElement) {
-        this._options = null;
-        this._dom = null;
+    constructor() {
         this._element = null;
-        this._element = pElement;
+        this._element = null;
     }
     DrawTest() {
-        if (this.canvasElement.getContext) {
-            var ctx = this.canvasElement.getContext('2d');
+        if (this.element.getContext) {
+            var ctx = this.element.getContext('2d');
             ctx.fillStyle = "rgb(200,0,0)";
             ctx.fillRect(10, 10, 55, 50);
         }
@@ -21,16 +19,10 @@ class Canvas {
         }
     }
     //#region Property Accessors
-    get dom() {
-        return this._dom;
-    }
-    set dom(value) {
-        this._dom = value;
-    }
-    get canvasElement() {
+    get element() {
         return this._element;
     }
-    set canvasElement(value) {
+    set element(value) {
         this._element = value;
     }
 }
