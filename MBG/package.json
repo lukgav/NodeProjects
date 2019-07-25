@@ -1,0 +1,26 @@
+{
+  "name": "mbg",
+  "version": "1.0.0",
+  "description": "A multiplayer game where players fire bullets at each other from a overhead view of the map they are on",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "watch-app": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crabman84/NodeProjects/tree/MultiplayerBulletGame/MBG"
+  },
+  "keywords": [
+    "Nodejs",
+    "html5",
+    "moongodb"
+  ],
+  "author": "crabman84",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "socket.io": "^2.2.0"
+  }
+}
