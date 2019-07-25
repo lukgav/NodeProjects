@@ -4,12 +4,36 @@
 <html>
 
 <head>
-    <h1>Hello HTML</h1>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 </head>
-
 <body>
+    <h1>Hello HTML</h1>
+    <canvas id="ctx", width="800", height="600", style="border: 1px solid #000000"></canvas>
+    
+    <script>
+        //set up canvas
+        var ctx = document.getElementById("ctx");
+        ctx.getContext("2d");
+        ctx.font = '30px Arial';
 
+        var socket = io();
+
+        var sad = () =>{
+            socket.emit('sad', {
+            reason: 'its not my birthday',
+            });
+        };
+
+        socket.on('newPosition', ()=>{
+            ctx.clearRect(0, 0, 500, 500);
+            ctx.fillText('P', data.x, data.y);
+        })
+
+        socket.on('serverMsg',(data) => {
+            console.log(data.msg);
+        })
+    </script> 
 </body>
-
+<button onclick="sad()">Sad</button>
 
 </html>
