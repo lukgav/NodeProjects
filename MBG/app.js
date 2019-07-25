@@ -27,7 +27,12 @@ testIO.sockets.on('connection', (socket) =>{
     socket.id = Math.random();
     socket.x = 0;
     socket.y = 0;
+    socket.number = "" + Math.floor(10 * Math.random());
     SOCKET_LIST[socket.id] = socket;
+
+    socket.on('disconnect', () => {
+        delete SOCKET_LIST[socket.id];
+    })
 
     socket.on('sad', (obj) =>{
         console.log('sad because ' + obj.reason);
@@ -38,14 +43,21 @@ testIO.sockets.on('connection', (socket) =>{
     })
 })
 
-setInterval(()=>{
+const loopInterval = 10;
+setInterval( () => {
+    var pack = [];
     for(var i in SOCKET_LIST){
         var socket = SOCKET_LIST[i];
         socket.x++;
         socket.y++;
-        socket.emit('newPosition'),{
-            x:socket.x,
-            y:socket.y
-        }
+        pack.push({
+            x: socket.x,
+            y: socket.y,
+            number:socket.number,
+        })
     }
-})
+    for (var i in SOCKET_LIST) {
+        var socket = SOCKET_LIST[i];
+        socket.emit('newPosition', pack); 
+    }
+}, loopInterval);

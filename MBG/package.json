@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "test",
-    "watch-app": "nodemon app.js"
+    "watch-app": "nodemon --watch app.js --watch client/index.html"
   },
   "repository": {
     "type": "git",
