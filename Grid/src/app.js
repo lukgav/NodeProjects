@@ -7,11 +7,13 @@ const hbs = require('hbs');
 const io = require('socket.io')(serve, { origins: '*:*' });
 //Set up paths
 const publicDirectoryPath = path.join(__dirname, '../public');
+const distDirectoryPath = path.join(__dirname, './dist');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
 // define express config paths
 app.use(express.static(publicDirectoryPath));
-app.use(express.static('public'));
+app.use(express.static(distDirectoryPath));
+// app.use(express.static('public'));
 
 const indexPath = (path.join(__dirname, '../public/index.html'));
 app.get('', (req, res) =>{
@@ -30,8 +32,8 @@ var socketTest;
 io.sockets.on('connection', (socket) =>{
     console.log('socket connection');
     // square variables
-    socket.x = 0;
-    socket.y = 0;
+    socket.x = 20;
+    socket.y = 30;
     socket.id = Math.random();
     socket.width = 100;
     // console.log(socket);

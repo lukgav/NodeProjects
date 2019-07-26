@@ -7,7 +7,7 @@
     "test": "test-grid",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
-    "watch-app": "nodemon --watch src/*.ts --watch app.js --watch templates/views/*.hbs --watch public/index.html"
+    "watch-app": "nodemon  --watch app.js --watch public/index.html"
   },
   "repository": {
     "type": "git",

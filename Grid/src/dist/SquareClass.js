@@ -12,23 +12,17 @@ class Square {
         this.yPos = y;
         this.length = length;
         this.sName = "Sour Eyes";
-        let lCanvas = document.getElementById('canvas');
-        let lContext = lCanvas.getContext("2d");
-        this._canvas = lCanvas;
-        this.context = lContext;
+        this._canvas = document.getElementById('canvas');
+        this.context = this._canvas.getContext("2d");
+        // this._canvas = lCanvas;
+        // this.context = lContext;
     }
     DrawMe() {
         let strTest = "Drawing Square TEST";
         console.log(strTest);
+        this.context.rect(this.xPos, this.yPos, this.length, this.length);
+        this.context.stroke();
         return strTest;
-        //Need to learn how to draw to HTML from here on.
-        // this._canvas = <HTMLCanvasElement>document.getElementById('grid');
-        // if(this._canvas.getContext) {
-        //     var ctx = this._canvas.getContext('2d');
-        //     ctx.clearRect(this.xPos, this.yPos, this.length, this.length);
-        // } else {
-        //     console.log('This canvas is nt supported');
-        // }
     }
     //#region Property Accessors
     get sName() {
@@ -75,10 +69,12 @@ class Square {
     }
 }
 //#endregion
-// window.onload = () => {
-//     HTMLElement el = document.getElementById('grid');
-//     var greeter = new Square(el);
-//     greeter.start();
-// };
-module.exports = Square;
+//send to server side
+// module.exports = Square;
+//Send to client side
+// var mySquare = new Square(0, 0, 100);
+// window.onload = config;
+// function config() {
+//     square = new Square(0, 0, 100);
+// }
 //# sourceMappingURL=SquareClass.js.map
