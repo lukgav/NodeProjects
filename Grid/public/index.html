@@ -3,12 +3,12 @@
 <head>
     <!-- <script src="https://cdn.socket.io/socket.io-2.2.0.js"></script> -->
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-
+    <script src="../src/dist/SquareClass.js"></script>
 </head>
 
 <body>
     <h1>Hello HTML</h1>
-    <canvas id="grid" width="1000" height="600"></canvas>
+    <canvas id="grid" width="800" height="600" style="border:1px solid #d3d3d3;"></canvas>
     <script type="text/javascript">
         const canvas = document.getElementById('grid');
         const ctx = canvas.getContext('2d');
@@ -16,18 +16,15 @@
 
         socket.emit('sad', {
             reason: 'its not my birthday',
-
         });
 
-        ctx.font = '30px Impact'
-        ctx.rotate(0.1)
-        ctx.fillText('Hello Canvas!', 50, 100);
-        ctx.save();
-
-
-        socket.on('drawSquare', (data) => {
-            ctx.rect(data.x, data.y, data.width, data.width);
-            ctx.stroke();
+        socket.on('newPosition', (data) => {
+            // ctx.clearRect(0, 0, 500, 500);
+            for (var i = 0; i < data.length; i++) {
+                //square.DrawMe
+                ctx.rect(data[i].x, data[i].y, data[i].width, data[i].width);
+                ctx.stroke();
+            }
         });
     </script>
 </body>

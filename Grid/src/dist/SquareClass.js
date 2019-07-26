@@ -6,12 +6,16 @@ class Square {
         this._xPos = 0;
         this._yPos = 0;
         this._length = 0;
-        this._SidesArray = ["left", "top", "right", "bottom"];
-        this._CornerArray = ["topLeft", "topRight", "botleft", "botRight"];
+        this._sidesArray = ["left", "top", "right", "bottom"];
+        this._cornerArray = ["topLeft", "topRight", "botleft", "botRight"];
         this.xPos = x;
         this.yPos = y;
         this.length = length;
         this.sName = "Sour Eyes";
+        let lCanvas = document.getElementById('canvas');
+        let lContext = lCanvas.getContext("2d");
+        this._canvas = lCanvas;
+        this.context = lContext;
     }
     DrawMe() {
         let strTest = "Drawing Square TEST";
@@ -52,16 +56,22 @@ class Square {
         this._length = value;
     }
     get sides() {
-        return this._SidesArray;
+        return this._sidesArray;
     }
     set sides(value) {
-        this.sides = value;
+        this._sidesArray = value;
     }
-    get corner() {
-        return this._CornerArray;
+    get corners() {
+        return this._cornerArray;
     }
-    set corner(value) {
-        this._CornerArray = value;
+    set corners(value) {
+        this._cornerArray = value;
+    }
+    get context() {
+        return this._context;
+    }
+    set context(value) {
+        this._context = value;
     }
 }
 //#endregion
