@@ -1,6 +1,4 @@
-import { throws } from "assert";
-
-class Square{
+export class Square{
 
     private _sName: string = "Sour Face";
     // private _canvas: HTMLCanvasElement = document.getElementById('grid');
@@ -76,6 +74,14 @@ class Square{
     set corners(value: string[]) {
         this._cornerArray = value;
     }
+
+    get canvas(): HTMLCanvasElement {
+        return this._canvas;
+    }
+    set canvas(value: HTMLCanvasElement) {
+        this._canvas = value;
+    }
+
     get context(): CanvasRenderingContext2D {
         return this._context;
     }
@@ -87,7 +93,7 @@ class Square{
 //#endregion
 
 //send to server side
-// module.exports = Square;
+module.exports = Square;
 
 //Send to client side
 // var mySquare = new Square(0, 0, 100);

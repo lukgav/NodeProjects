@@ -35,7 +35,7 @@ io.sockets.on('connection', (socket) =>{
     socket.x = 20;
     socket.y = 30;
     socket.id = Math.random();
-    socket.width = 100;
+    socket.width = 10;
     // console.log(socket);
 
     SOCKET_LIST[socket.id] = socket;
@@ -46,7 +46,7 @@ io.sockets.on('connection', (socket) =>{
 });
 
 
-const loopInterval = 1000/25;
+const loopInterval = 100000/25;
 setInterval(() => {
     var pack = [];
     for (var i in SOCKET_LIST) {
@@ -63,4 +63,4 @@ setInterval(() => {
         var socket = SOCKET_LIST[i];
         socket.emit('newPosition', pack);
     }
-}, loopInterval); 
+}, loopInterval);

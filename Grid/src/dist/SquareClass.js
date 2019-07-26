@@ -1,4 +1,4 @@
-class Square {
+export class Square {
     // private _contgitext: CanvasRenderingContext2D;
     constructor(x, y, length) {
         this._sName = "Sour Face";
@@ -61,6 +61,12 @@ class Square {
     set corners(value) {
         this._cornerArray = value;
     }
+    get canvas() {
+        return this._canvas;
+    }
+    set canvas(value) {
+        this._canvas = value;
+    }
     get context() {
         return this._context;
     }
@@ -70,7 +76,7 @@ class Square {
 }
 //#endregion
 //send to server side
-// module.exports = Square;
+module.exports = Square;
 //Send to client side
 // var mySquare = new Square(0, 0, 100);
 // window.onload = config;
