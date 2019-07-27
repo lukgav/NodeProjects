@@ -18,22 +18,76 @@
 
         var socket = io();
 
-        var sad = () =>{
-            socket.emit('sad', {
-            reason: 'its not my birthday',
-            });
-        };
-
         socket.on('newPosition', (data)=>{
-            ctx.clearRect(0, 0, 500, 500);
+            ctx.clearRect(0, 0, 800, 600);
             for(var i=0;i<data.length;i++){
-            ctx.fillText(data[i].number, data[i].x, data[i].y);
+                ctx.fillText(data[i].number, data[i].x, data[i].y);
             }
         });
+        var key = {
+            d: 68,
+            s: 83,
+            a: 65,
+            w: 87,
+        }
 
-        socket.on('serverMsg',(data) => {
-            console.log(data.msg);
-        })
+        function keyIsPressed(id, isPressed){
+           socket.emit('keyPress', {inputId: id, state: isPressed});
+        }   
+
+        function CheckUserInputChangeOutputTo(event, isPressed){
+            if (event.keyCode === key.d) {
+                keyIsPressed('right', isPressed);
+            }
+            if (event.keyCode === key.s) {
+                keyIsPressed('down', isPressed);
+            }
+            if (event.keyCode === key.a) {
+                keyIsPressed('left', isPressed);
+            }
+            if (event.keyCode === key.w) {
+                keyIsPressed('up', isPressed);
+            }
+        }
+        
+        document.onkeydown = (event) => {
+            if (event.keyCode === key.d) {
+                keyIsPressed('right', true)
+                // socket.emit('keyPress', { inputId: 'right', state: true});
+            }
+            if (event.keyCode === key.s) {
+                keyIsPressed('down', true)
+                // socket.emit('keyPress', { inputId: 'down', state: true});
+            }
+            if (event.keyCode === key.a) {
+                keyIsPressed('left', true)
+                // socket.emit('keyPress', { inputId: 'left', state: true });
+            }
+            if (event.keyCode === key.w) {
+                keyIsPressed('up', true)
+                // socket.emit('keyPress', { inputId: 'up', state: true});
+            }        
+        }
+        document.onkeyup = (event) => {
+            if (event.keyCode === key.d) {
+                keyIsPressed('right', true)
+                // socket.emit('keyPress', { inputId: 'right', state: false });
+            }
+            if (event.keyCode === key.s) {
+                keyIsPressed('down', true)
+
+                // socket.emit('keyPress', { inputId: 'down', state: false });
+            }
+            if (event.keyCode === key.a) {
+                keyIsPressed('left', true)
+                // socket.emit('keyPress', { inputId: 'left', state: false });
+            }
+            if (event.keyCode === key.w) {
+                keyIsPressed('up', true)
+                // socket.emit('keyPress', { inputId: 'up', state: false });
+            }         
+        }
+
     </script> 
 </body>
 <button onclick="sad()">Sad</button>
