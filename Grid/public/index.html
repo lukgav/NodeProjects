@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- <script src="https://cdn.socket.io/socket.io-2.2.0.js"></script> -->
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <head>
+        <!-- <script src="https://cdn.socket.io/socket.io-2.2.0.js"></script> -->
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 
-</head>
-<body>
-    <h1>Hello HTML</h1>
-    <canvas id="canvas" width="800" height="600" style="border:1px solid #000000;"></canvas>
-    <script src="SquareClass.js"></script>
-    <script src="Grid.js"></script>
-    <script type="text/javascript">
-        // const canvas = document.getElementById('grid');
-        // const ctx = canvas.getContext('2d');
-        var socket = io();
-        var canvas = document.getElementById("canvas"):;
-        var canvasWidth = canvas.width;
-        var canvasHeight = canvas.clientHeight;
-        console.log(CanvasWidth + ' : ' + canvasHeight);
-        var testSquare = new Square(0, 0, 100);
-        var Grid = new Grid(0, 0, 100);
-        // var square = new Squareclass(0, 0, 100);
-
-        socket.emit('sad', {
-            reason: 'its not my birthday',
-        });
-        // var square;
-        socket.on('newPosition', (data) => {
-            // ctx.clearRect(0, 0, 500, 500);
-            console.log(testSquare.canvas.width);
-            for (var i = 0; i < data.length; i++) {
-                // testSquare.DrawMe
-                testSquare = new Square(data[i].x, data[i].y, data[i].width, data[i].width);
-                testSquare.DrawMe();
-                // ctx.rect(data[i].x, data[i].y, data[i].width, data[i].width);
-                // ctx.stroke();
-            }
-        });
-    </script>
-    
-</body>
-</html> 
+    </head>
+    <body>
+        <h1 id="hello">Hello HTML</h1>
+        <canvas id="canvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+        <!-- <script src="SquareClass.js"></script> -->
+        <!-- <script type="module" src="../src/dist/Grid.js"></script> -->
+        <script type="text/javascript" src="./js/dist/Grid.js"></script>
+        <script type="text/javascript" src="./js/dist/SquareClass.js"></script>
+        <script type="text/javascript" src="./js/dist/Ball.js"></script>
+        <script type="text/javascript" src="client.js"></script>
+    </body>
+</html>

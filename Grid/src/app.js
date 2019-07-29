@@ -5,21 +5,23 @@ const app = express();
 const serve = require('http').Server(app);
 const hbs = require('hbs');
 const io = require('socket.io')(serve, { origins: '*:*' });
+// const Square = require('./dist/SquareClass.js');
 //Set up paths
 const publicDirectoryPath = path.join(__dirname, '../public');
 const distDirectoryPath = path.join(__dirname, './dist');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
+const indexPath = (path.join(__dirname, '../public/index.html'));
 // define express config paths
 app.use(express.static(publicDirectoryPath));
 app.use(express.static(distDirectoryPath));
 // app.use(express.static('public'));
-
-const indexPath = (path.join(__dirname, '../public/index.html'));
 app.get('', (req, res) =>{
-    res.set('Content-Type', 'text/html');
+    // res.setHeader("Content-Type", )
+    res.setHeader("Content-Type", "text/html");
+    // res.set('Content-Type', ['text/html', 'text/javascript', 'text/css']);
     res.set('X-Content-Type-Options', 'sniff');
-
+    console.log(req.headers);
     res.sendFile(indexPath);
 })
 
@@ -37,9 +39,23 @@ io.sockets.on('connection', (socket) =>{
     socket.id = Math.random();
     socket.width = 10;
     // console.log(socket);
+    var canvas;
+    var ctx;
+    var sqr;
+    socket.on('canvas', (data) => {
+        // canvas = data.dCanvas;
+        context = data.dContext;
+        // sqr = new Square(0, 0, 100, context);   
+        // sqr.DrawMe();
+        console.log(context);
+        console.log('socket test');
+    })
+    // var sqr = new Square(0, 0, 100, context);
+
 
     SOCKET_LIST[socket.id] = socket;
     socketTest = socket;
+
     socket.on('sad', (data) =>{
         console.log('sad because no square is drawn...' + data.reason);
     })

@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
         "esModuleInterop": true,
-        "target": "es6",
+        "module": "esnext",
+        "target": "esnext",
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
-        "outDir": "./src/dist",
+        "outDir": "./public/js/dist",
         "baseUrl": ".",
         "paths": {
             "*": [
@@ -15,6 +16,6 @@
         }
     },
     "include": [
-        "src/**/*"
+        "public/**/*"
     ]
 }

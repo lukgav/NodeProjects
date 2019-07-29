@@ -53,5 +53,5 @@ class Square {
     }
 }
 //#endregion
-module.exports = Square;
+// module.exports = Square;
 //# sourceMappingURL=SquareClass.js.map
